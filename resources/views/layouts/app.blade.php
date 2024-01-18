@@ -19,6 +19,8 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('sb-admin') }}/css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap5.min.css">
+    <script src="https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap5.min.js"></script>
 
 </head>
 
@@ -50,7 +52,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="{{ route('lisence.index') }}">
                     <i class="fas fa-fw fa-solid fa-book"></i>
                     <span>Lisence</span></a>
             </li>
@@ -183,6 +185,8 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('sb-admin') }}/js/demo/chart-area-demo.js"></script>
     <script src="{{ asset('sb-admin') }}/js/demo/chart-pie-demo.js"></script>
+
+    <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
 
 </body>
 
