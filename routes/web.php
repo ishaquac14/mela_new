@@ -41,3 +41,12 @@ Route::get(
     [LisenceController::class, 'create']
 )->name('lisence.create');
 
+Route::post(
+    '/lisence/store',
+    [LisenceController::class, 'store']
+)->name('lisence.store');
+
+Route::get(
+    '/lisence/{id}',
+    [LisenceController::class, 'show']
+)->name('lisence.show');
