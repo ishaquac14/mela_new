@@ -32,7 +32,7 @@
 
     <div class="container">
         <div class="row mb-4">
-            <h3>Lisence</h3>
+            <h3>Create Lisence</h3>
         </div>
         <div class="mb-4 d-flex align-items-center justify-content-end">
             <a href="javascript:history.go(-1);" class="btn btn-primary">Kembali</a>
