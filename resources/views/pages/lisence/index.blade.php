@@ -30,7 +30,7 @@
         @endif
     </div>
 
-    <div class="container-fluid">
+    <div class="container">
         <div class="mb-4">
             <h3>Lisence</h3>
             <div class="d-flex align-items-center justify-content-end">
@@ -78,7 +78,7 @@
         </table>
     </div>
 
-    <div class="modal" id="show_modal" tabindex="-1">
+    {{-- <div class="modal" id="show_modal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -94,11 +94,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
 <script>
     $(document).ready(function() {
         $('#myTable').DataTable();
