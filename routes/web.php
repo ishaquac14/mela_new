@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LisenceController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,7 +57,7 @@ Route::get(
     [LisenceController::class, 'edit']
 )->name('lisence.edit');
 
-Route::post(
+Route::get(
     '/lisence/update/{id}',
     [LisenceController::class, 'update']
 )->name('lisence.update');
@@ -65,3 +66,8 @@ Route::get(
     '/lisence/destroy/{id}',
     [LisenceController::class, 'destroy']
 )->name('lisence.destroy');
+
+Route::get(
+    '/dashboard',
+    [DashboardController::class, 'index']
+)->name('dashboard.index');

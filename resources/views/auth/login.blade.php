@@ -1,9 +1,5 @@
 <x-guest-layout>
 
-    {{-- <div class="text-center">
-        <img src="{{ asset('/images/aisin.png') }}" alt="Logo" class="block mx-auto h-16 mb-4" />
-    </div> --}}
-    <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form method="POST" action="{{ route('login') }}">
@@ -48,4 +44,7 @@
             </x-primary-button>
         </div>
     </form>
+
+    <!-- CSS untuk latar belakang gradien abu-abu -->
 </x-guest-layout>
+

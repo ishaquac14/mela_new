@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container" style="width: 95%">
         @if (session('error'))
             <div class="alert alert-danger border border-danger text-danger px-4 py-3 rounded-md shadow mb-4" role="alert">
                 <div class="d-flex align-items-center">
@@ -30,7 +30,7 @@
         @endif
     </div>
 
-    <div class="container" style="width: 90%">
+    <div class="container" style="width: 95%">
         <div class="mb-4">
             <h3>Lisence</h3>
             <div class="d-flex align-items-center justify-content-end">
@@ -41,7 +41,7 @@
         <table id="myTable" class="table-bordered table-striped table-hover" style="width: 100%">
             <thead class="table-primary">
                 <tr>
-                    <th class="align-middle text-center">ID</th>
+                    <th class="align-middle text-center" style="height: 40px">ID</th>
                     <th class="align-middle text-center">Nama Lisence</th>
                     <th class="align-middle text-center">Nomor Lisence</th>
                     <th class="align-middle text-center">Vendor</th>
@@ -53,7 +53,7 @@
             <tbody>
                 @foreach ($lisences as $lisence)
                     <tr>
-                        <td class="align-middle text-center">{{ $loop->iteration }}</td>
+                        <td class="align-middle text-center" style="height: 40px">{{ $loop->iteration }}</td>
                         <td class="align-middle text-center">{{ $lisence->nama_lisence }}</td>
                         <td class="align-middle text-center">{{ $lisence->nomor_lisence }}</td>
                         <td class="align-middle text-center">{{ $lisence->vendor }}</td>

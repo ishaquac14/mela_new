@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container" style="width: 90%">
+    <div class="container" style="width: 95%">
         <div class="mb-4">
             <h3>Detail Lisence</h3>
-            <div class="d-flex align-items-center justify-content-end">
-                <a href="javascript:history.go(-1);" class="btn btn-primary">Kembali</a>
+            <div class="mb-4 d-flex align-items-center justify-content-end">
+                <a href="javascript:history.go(-1);" class="btn btn-primary">
+                    <i class="fas fa-solid fa-backward"></i>
+                </a>
             </div>
         </div>
 
@@ -48,13 +50,12 @@
         <div class="row mt-3">
             <div class="col-md-6">
                 <label class="form-label">Lisence Bentuk PDF</label>
-                <iframe src="{{ url('/storage/storage/' . $lisence->input_file) }}" align="top" height="620" width="100%" frameborder="0" scrolling="auto"></iframe>
+                <iframe src="{{ asset('/storage/storage/' . $lisence->input_file) }}" align="top" height="620" width="100%" frameborder="0" scrolling="auto"></iframe>
             </div>
             <div class="col-md-6">
                 <label class="form-label">Note</label>
-                <textarea name="note" class="form-control" value="{{ $lisence->note }}"
-                    readonly></textarea>
-            </div>
+                <textarea name="note" class="form-control" readonly>{{ $lisence->note }}</textarea>
+            </div>            
         </div>
 
     </div>

@@ -37,11 +37,11 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     {{-- <i class="fas fa-laugh-wink"></i> --}}
                 </div>
-                <div class="sidebar-brand-text mx-3">M e l a</div>
-            </a>
+                <div class="sidebar-brand-text"><font face="poppins" size="4">M e l a</font></div>
+            </a>                        
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+            <!-- Divider -->    
+            <hr class="sidebar-divider my-0">   
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">

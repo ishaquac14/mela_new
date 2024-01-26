@@ -30,12 +30,14 @@
         @endif
     </div>
 
-    <div class="container" style="width: 90%">
+    <div class="container" style="width: 95%">
         <div class="mb-4">
             <h3 class="row">Create Lisence</h3>
         </div>
         <div class="mb-4 d-flex align-items-center justify-content-end">
-            <a href="javascript:history.go(-1);" class="btn btn-primary">Kembali</a>
+            <a href="javascript:history.go(-1);" class="btn btn-primary">
+                <i class="fas fa-solid fa-backward"></i>
+            </a>
         </div>
 
         <form action="{{ route('lisence.store') }}" method="POST" enctype="multipart/form-data">
@@ -95,7 +97,7 @@
                     </div>                    
                 </div>
                 <div class="row">
-                    <div class="row col-md-6 mt-4">
+                    <div class="row col-md-6 mt-3">
                         <label for="floatingTextarea2" class="row">Note</label>
                         <textarea name="note" class="form-control" placeholder="Silahkan Isi Note" id="floatingTextarea2"
                             style="height: 100px"></textarea>

@@ -1,3 +1,3 @@
-<div class="text-center">
-    <img src="{{ asset('/images/aisin.png') }}" alt="Logo" class="block mx-auto h-16 mb-4" />
+<div class="text-center mt-5">
+    <img src="{{ asset('/images/logo1.png') }}" alt="Logo" class="block mx-auto mb-4" style="width: 250px; height: auto;">
 </div>
