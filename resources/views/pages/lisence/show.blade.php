@@ -28,7 +28,7 @@
             </div>
             <div class="col-md-6">
                 <label class="form-label">Tanggal Dikeluarkan</label>
-                <input type="text" name="tanggal_dikeluarkan" class="form-control" value="{{ $lisence->tanggal_dikeluarkan }}"
+                <input type="text" name="tanggal_keluar" class="form-control" value="{{ $lisence->tanggal_keluar }}"
                     readonly>
             </div>
         </div>
@@ -48,12 +48,12 @@
         <div class="row mt-3">
             <div class="col-md-6">
                 <label class="form-label">Lisence Bentuk PDF</label>
-                <input type="text" name="input_file" class="form-control" value="{{ $lisence->input_file }}" readonly>
+                <iframe src="{{ url('/storage/storage/' . $lisence->input_file) }}" align="top" height="620" width="100%" frameborder="0" scrolling="auto"></iframe>
             </div>
             <div class="col-md-6">
                 <label class="form-label">Note</label>
-                <input type="text" name="note" class="form-control" value="{{ $lisence->note }}"
-                    readonly>
+                <textarea name="note" class="form-control" value="{{ $lisence->note }}"
+                    readonly></textarea>
             </div>
         </div>
 

@@ -2,43 +2,15 @@
 
 @section('content')
     <div class="container">
-        @if (session('error'))
-            <div class="alert alert-danger border border-danger text-danger px-4 py-3 rounded-md shadow mb-4" role="alert">
-                <div class="d-flex align-items-center">
-                    <div class="mr-3">
-                        <i class="fas fa-exclamation-circle"></i>
-                    </div>
-                    <div>
-                        {{ session('error') }}
-                    </div>
-                </div>
-            </div>
-        @endif
-
-        @if (session('success'))
-            <div class="alert alert-success border border-success text-success px-4 py-3 rounded-md shadow mb-4"
-                role="alert">
-                <div class="d-flex align-items-center">
-                    <div class="mr-3">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <div>
-                        {{ session('success') }}
-                    </div>
-                </div>
-            </div>
-        @endif
-    </div>
-
-    <div class="container">
         <div class="mb-4">
-            <h3 class="row">Create Lisence</h3>
-        </div>
-        <div class="mb-4 d-flex align-items-center justify-content-end">
-            <a href="javascript:history.go(-1);" class="btn btn-primary">Kembali</a>
+            <h3 class="row">Edit Lisence</h3>
+            <div class="d-flex align-items-center justify-content-end">
+                <a href="javascript:history.go(-1);" class="btn btn-primary">Kembali</a>
+            </div>
         </div>
 
-        <form action="{{ route('lisence.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('lisence.update', ['id' => $lisence->id]) }}" method="POST" enctype="multipart/form-data">
+            @method('PUT')
             @csrf
             {{-- @method('POST') --}}
             <table id="myTable" class="table">
@@ -46,12 +18,12 @@
                     <div class="row col-md-6" style="margin-right: 20px">
                         <label class="row" for="nama_lisence">Nama Lisence</label>
                         <input class="form-control" type="text" name="nama_lisence" placeholder="Masukan Nama Lisence"
-                            aria-label="default input example">
+                            aria-label="default input example" value="{{ $lisence->nama_lisence }}">
                     </div>
                     <div class="row col-md-6">
                         <label class="row" for="nomor_lisence">Nomor Lisence</label>
                         <input class="form-control" type="text" name="nomor_lisence" placeholder="Masukan Nomor Lisence"
-                            aria-label="default input example">
+                            aria-label="default input example" value="{{ $lisence->nomor_lisence }}">
                     </div>
                 </div>
                 <div class="row">
@@ -103,10 +75,11 @@
                 </div>
                 <div class="row">
                     <div class="row col-md-1 mt-4">
-                        <button class="btn btn-primary">SUBMIT</button>
+                        <button class="btn btn-warning">UPDATE</button>
                     </div>
                 </div>
             </table>
         </form>
     </div>
+
 @endsection

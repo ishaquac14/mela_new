@@ -50,3 +50,18 @@ Route::get(
     '/lisence/{id}',
     [LisenceController::class, 'show']
 )->name('lisence.show');
+
+Route::get(
+    '/lisence/edit/{id}',
+    [LisenceController::class, 'edit']
+)->name('lisence.edit');
+
+Route::post(
+    '/lisence/update/{id}',
+    [LisenceController::class, 'update']
+)->name('lisence.update');
+
+Route::get(
+    '/lisence/destroy/{id}',
+    [LisenceController::class, 'destroy']
+)->name('lisence.destroy');

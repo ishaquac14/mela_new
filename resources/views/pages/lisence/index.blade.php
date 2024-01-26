@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container">
         @if (session('error'))
             <div class="alert alert-danger border border-danger text-danger px-4 py-3 rounded-md shadow mb-4" role="alert">
                 <div class="d-flex align-items-center">
@@ -60,25 +60,23 @@
                         <td class="align-middle text-center">{{ $lisence->tanggal_keluar }}</td>
                         <td class="align-middle text-center">{{ $lisence->tanggal_expired }}</td>
                         <td class="align-middle text-center">
-                            <a href="{{ route('lisence.show', ['id' => $lisence->id]) }}" class="text-secondary"
-                                data-bs-toggle="modal" data-bs-target="#show_modal">
+                            <a href="{{ route('lisence.show', ['id' => $lisence->id]) }}" style="text-decoration: none" class="text-secondary">
                                 <i class="fas fa-eye" style="margin-right: 10px;"></i>
                             </a>
-                            <a href="#" style="margin-right: 10px;" class="text-secondary">
-                                <i class="fas fa-pen"></i>
+                            <a href="{{ route('lisence.edit', ['id' => $lisence->id]) }}" style="text-decoration: none" class="text-secondary">
+                                <i class="fas fa-pen" style="margin-right: 10px;"></i>
                             </a>
-                            <a href="#" class="text-secondary">
+                            <a href="{{ route('lisence.destroy', ['id' => $lisence->id]) }}" onclick="return confirm('Apakah yakin akan dihapus?')" style="text-decoration: none" class="text-secondary">
                                 <i class="fas fa-trash"></i>
-                            </a>
+                            </a>                            
                         </td>
-
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
 
-    {{-- <div class="modal" id="show_modal" tabindex="-1">
+    {{-- <div class="modal" id="destroy_modal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">

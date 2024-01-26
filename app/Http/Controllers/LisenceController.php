@@ -14,8 +14,6 @@ class LisenceController extends Controller
     {
         $lisences = Lisence::orderBy('created_at', 'desc')->get();
 
-        // dd($request);
-
         return view('pages.lisence.index', compact('lisences'));
     }
 
@@ -28,6 +26,43 @@ class LisenceController extends Controller
     {
         $lisence = Lisence::findOrFail($id);
         return view('pages.lisence.show', compact('lisence'));
+    }
+
+    public function edit($id)
+    {
+        $lisence = Lisence::findOrFail($id);
+        return view('pages.lisence.edit', compact('lisence'));
+    }
+
+    public function destroy(string $id)
+    {
+        $lisence = Lisence::findOrFail($id);
+        $lisence->delete();
+        return redirect()->route('lisence.index')->with('error', 'Data Berhasil Dihapus !');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $lisence = Lisence::findOrFail($id);
+
+        $request->validate([
+            'nama_lisence' => 'string|nullable',
+            'nomor_lisence' => 'string|nullable',
+            'vendor' => 'string|nullable',
+            'tanggal_keluar' => 'string|nullable',
+            'tanggal_expired' => 'string|nullable',
+            'jenis_lisence' => 'string|nullable',
+            'input_file' => 'nullable|mimes:pdf',
+            'note' => 'string|nullable'
+        ]);
+
+        $data = $request->only([
+            'nama_lisence', 'nomor_lisence', 'vendor', 'tanggal_keluar', 
+            'tanggal_expired', 'jenis_lisence', 'input_file', 'note']);
+
+        $lisence->update($data);
+        
+        return redirect()->route('lisence.index')->with('success', 'Data Berhasil diupdate !');
     }
 
     public function store(Request $request)
@@ -68,7 +103,7 @@ class LisenceController extends Controller
                     $filenameSimpan = $filename . '_' . time() . '.' . $extension;
                     $path = $file->storeAs('public/storage/', $filenameSimpan);
 
-                    $data['input_file'] = $path;
+                    $data['input_file'] = $filenameSimpan;
                 } 
             }
 
