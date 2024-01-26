@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container" style="width: 90%">
         <div class="mb-4">
             <h3>Detail Lisence</h3>
             <div class="d-flex align-items-center justify-content-end">

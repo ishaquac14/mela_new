@@ -30,7 +30,7 @@
         @endif
     </div>
 
-    <div class="container">
+    <div class="container" style="width: 90%">
         <div class="mb-4">
             <h3 class="row">Create Lisence</h3>
         </div>
@@ -95,7 +95,7 @@
                     </div>                    
                 </div>
                 <div class="row">
-                    <div class="row col-md-6 mt-3">
+                    <div class="row col-md-6 mt-4">
                         <label for="floatingTextarea2" class="row">Note</label>
                         <textarea name="note" class="form-control" placeholder="Silahkan Isi Note" id="floatingTextarea2"
                             style="height: 100px"></textarea>

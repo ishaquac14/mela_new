@@ -30,7 +30,7 @@
         @endif
     </div>
 
-    <div class="container">
+    <div class="container" style="width: 90%">
         <div class="mb-4">
             <h3>Lisence</h3>
             <div class="d-flex align-items-center justify-content-end">
@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        <table id="myTable" class="table-bordered table-striped table-hover">
+        <table id="myTable" class="table-bordered table-striped table-hover" style="width: 100%">
             <thead class="table-primary">
                 <tr>
                     <th class="align-middle text-center">ID</th>
@@ -95,8 +95,7 @@
     </div> --}}
 @endsection
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"
-    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 
 <script>
     $(document).ready(function() {

@@ -30,13 +30,6 @@
     <!-- Template Main CSS File -->
     <link href="{{ asset('arsha') }}/assets/css/style.css" rel="stylesheet">
 
-    <!-- =======================================================
-  * Template Name: Arsha
-  * Updated: Sep 18 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -80,8 +73,8 @@
                             <a href="{{ route('register') }}" class="btn-get-started scrollto"
                                 style="margin-right: 30px;">Register</a>
                         @endif
-                        <a href="{{ route('login') }}" class="btn-get-started scrollto">Log
-                            in</a>
+                        {{-- <a href="{{ route('login') }}" class="btn-get-started scrollto">Log
+                            in</a> --}}
                     </div>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
