@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LisenceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,15 +23,16 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware('auth')->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/user/profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/user/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/user/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/user/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::get(
     '/lisence',
@@ -71,3 +73,33 @@ Route::get(
     '/dashboard',
     [DashboardController::class, 'index']
 )->name('dashboard.index');
+
+Route::get(
+    '/transaction',
+    [TransactionController::class, 'index']
+)->name('transaction.index');
+
+Route::get(
+    '/transaction/create',
+    [TransactionController::class, 'create']
+)->name('transaction.create');
+
+Route::post(
+    '/transaction/store',
+    [TransactionController::class, 'store']
+)->name('transaction.store');
+
+Route::get(
+    '/transaction/{id}',
+    [TransactionController::class, 'show']
+)->name('transaction.show');
+
+Route::get(
+    '/transaction/edit/{id}',
+    [TransactionController::class, 'edit']
+)->name('transaction.edit');
+
+Route::get(
+    '/transaction/update/{id}',
+    [TransactionController::class, 'update']
+)->name('transaction.update');

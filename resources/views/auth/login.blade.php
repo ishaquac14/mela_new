@@ -45,6 +45,4 @@
         </div>
     </form>
 
-    <!-- CSS untuk latar belakang gradien abu-abu -->
 </x-guest-layout>
-

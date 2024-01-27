@@ -37,15 +37,17 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     {{-- <i class="fas fa-laugh-wink"></i> --}}
                 </div>
-                <div class="sidebar-brand-text"><font face="poppins" size="4">M e l a</font></div>
-            </a>                        
+                <div class="sidebar-brand-text">
+                    <font face="poppins" size="4">M e l a</font>
+                </div>
+            </a>
 
-            <!-- Divider -->    
-            <hr class="sidebar-divider my-0">   
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="{{ 'dashboard' }}">
+                <a class="nav-link" href="/dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -59,7 +61,7 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="{{ route('transaction.index') }}">
                     <i class="fas fa-fw fa-solid fa-comments-dollar"></i>
                     <span>Transaction</span></a>
             </li><br>
@@ -93,27 +95,30 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 20px">
+                                <span
+                                    class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
                                 <img class="img-profile rounded-circle"
                                     src="{{ asset('sb-admin') }}/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
+                                {{-- <a class="dropdown-item" href="{{ route('profile.show') }}">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="{{ route('profile.edit') }}">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Settings
+                                </a> --}}
                                 <div class="dropdown-divider"></div>
-                                {{-- <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a href="#" class="dropdown-item" data-toggle="modal" data-target="#LogoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
-                                </a> --}}
-                                <form class="text-center align-middle" method="POST" action="{{ route('logout') }}">
-                                    @csrf
-                                    <button type="submit"
-                                        class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#LogoutModal">
-                                        {{ __('Log Out') }}
-                                    </button>
-                                </form>
+                                </a>                                
                             </div>
+
                         </li>
 
                     </ul>
@@ -150,7 +155,7 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="LogoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -160,14 +165,20 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">
+                    Select "Logout" below if you are ready to end your current session.
+                </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
+                    <form id="logoutForm" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf <!-- tambahkan ini untuk laravel -->
+                    </form>
+                    <button class="btn btn-primary" type="button" onclick="document.getElementById('logoutForm').submit()">Logout</button>
+                </div>                
             </div>
         </div>
     </div>
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('sb-admin') }}/vendor/jquery/jquery.min.js"></script>
