@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container" style="width: 95%">
+    <div class="container" style="width: 95%; font-family: 'Poppins', sans-serif;">
         <div class="mb-4">
             <h3>Detail Lisence</h3>
             <div class="mb-4 d-flex align-items-center justify-content-end">

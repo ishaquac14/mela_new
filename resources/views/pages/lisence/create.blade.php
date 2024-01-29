@@ -30,7 +30,7 @@
         @endif
     </div>
 
-    <div class="container" style="width: 95%">
+    <div class="container" style="width: 95%; font-family: 'Poppins', sans-serif;">
         <div class="mb-4">
             <h3 class="row">Create Lisence</h3>
         </div>

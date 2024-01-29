@@ -30,9 +30,9 @@
         @endif
     </div>
 
-    <div class="container" style="width: 95%">
+    <div class="container" style="width: 95%; font-family: 'Poppins', sans-serif;">
         <div class="mb-4">
-            <h3>Lisence</h3>
+            <h3 >Lisence</h3>
             <div class="d-flex align-items-center justify-content-end">
                 <a href="{{ route('lisence.create') }}" class="btn btn-primary" style="margin-left: 10px;">Create</a>
             </div>

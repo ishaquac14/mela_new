@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container" style="width: 95%">
+    <div class="container" style="width: 95%; font-family: 'Poppins', sans-serif;">
         <div class="mb-4">
-            <h3 class="row">Edit Lisence</h3>
+            <h3 class="row" style="font-family: 'Poppins', sans-serif;">Edit Lisence</h3>
             <div class="mb-4 d-flex align-items-center justify-content-end">
                 <a href="javascript:history.go(-1);" class="btn btn-primary">
                     <i class="fas fa-solid fa-backward"></i>

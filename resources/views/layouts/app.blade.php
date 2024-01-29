@@ -43,31 +43,31 @@
             </a>
 
             <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+            <hr class="sidebar-divider my-0" style="border-color: #dddddd;">
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="/dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span style="font-family: 'Poppins', sans-serif;">Dashboard</span></a>
             </li>
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('lisence.index') }}">
                     <i class="fas fa-fw fa-solid fa-book"></i>
-                    <span>Lisence</span></a>
+                    <span style="font-family: 'Poppins', sans-serif;">Lisence</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('transaction.index') }}">
                     <i class="fas fa-fw fa-solid fa-comments-dollar"></i>
-                    <span>Transaction</span></a>
+                    <span style="font-family: 'Poppins', sans-serif;">Transaction</span></a>
             </li><br>
 
             <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+            <hr class="sidebar-divider d-none d-md-block" style="border-color: #dddddd;">
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -97,7 +97,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 20px">
                                 <span
-                                    class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
+                                    class="mr-2 d-none d-lg-inline text-gray-600 small" style="font-family: 'Poppins', sans-serif;">{{ Auth::user()->name }}</span>
                                 <img class="img-profile rounded-circle"
                                     src="{{ asset('sb-admin') }}/img/undraw_profile.svg">
                             </a>
@@ -113,7 +113,7 @@
                                     Settings
                                 </a> --}}
                                 <div class="dropdown-divider"></div>
-                                <a href="#" class="dropdown-item" data-toggle="modal" data-target="#LogoutModal">
+                                <a href="#" class="dropdown-item" style="font-family: 'Poppins', sans-serif;" data-toggle="modal" data-target="#LogoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>                                
@@ -135,7 +135,7 @@
 
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
+                <div class="container my-auto" style="font-family: 'Poppins', sans-serif;">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; IT Development 2024</span>
                     </div>
@@ -155,7 +155,7 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="LogoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" style="font-family: 'Poppins', sans-serif;" id="LogoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
