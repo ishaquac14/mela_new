@@ -80,6 +80,13 @@ class TransactionController extends Controller
         return view('pages.transaction.edit', compact('transaction'));
     }
 
+    public function destroy(string $id)
+    {
+        $transaction = Transaction::findOrFail($id);
+        $transaction->delete();
+        return redirect()->route('transaction.index')->with('error', 'Data Berhasil Dihapus !');
+    }
+
     public function update(Request $request, $id)
     {
         // Temukan transaksi berdasarkan ID atau beri respons 404 jika tidak ditemukan

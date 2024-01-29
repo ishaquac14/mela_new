@@ -103,3 +103,8 @@ Route::get(
     '/transaction/update/{id}',
     [TransactionController::class, 'update']
 )->name('transaction.update');
+
+Route::get(
+    '/transaction/destroy/{id}',
+    [TransactionController::class, 'destroy']
+)->name('transaction.destroy');

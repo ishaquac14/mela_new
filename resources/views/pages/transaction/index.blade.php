@@ -66,7 +66,7 @@
                             <a href="{{ route('transaction.edit', ['id' => $transaction->id]) }}" style="text-decoration: none" class="text-secondary">
                                 <i class="fas fa-pen" style="margin-right: 10px;"></i>
                             </a>
-                            <a href="#" onclick="return confirm('Apakah yakin akan dihapus?')" style="text-decoration: none" class="text-secondary">
+                            <a href="{{ route('transaction.destroy', ['id' => $transaction->id]) }}" onclick="return confirm('Apakah yakin akan dihapus?')" style="text-decoration: none" class="text-secondary">
                                 <i class="fas fa-trash"></i>
                             </a>                            
                         </td>

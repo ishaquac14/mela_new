@@ -48,29 +48,29 @@
                     <div class="row col-md-6" style="margin-right: 20px">
                         <label class="row" for="nama_lisence">Nama Lisence</label>
                         <input class="form-control" type="text" name="nama_lisence" placeholder="Masukan Nama Lisence"
-                            aria-label="default input example">
+                            aria-label="default input example" required>
                     </div>
                     <div class="row col-md-6">
                         <label class="row" for="nomor_lisence">Nomor Lisence</label>
                         <input class="form-control" type="text" name="nomor_lisence" placeholder="Masukan Nomor Lisence"
-                            aria-label="default input example">
+                            aria-label="default input example" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="row col-md-6 mt-4" style="margin-right: 20px">
                         <label class="row" for="vendor">Vendor</label>
                         <input class="form-control" type="text" name="vendor" placeholder="Input Nama Perusahaan"
-                            aria-label="default input example">
+                            aria-label="default input example" required>
                     </div>
                     <div class="row col-md-3 mt-4" style="margin-right: 10px">
                         <label class="row" for="tanggal_keluar">Tanggal Dikeluarkan</label>
                         <input class="form-control" type="date" name="tanggal_keluar" placeholder="Tanggal Dikeluarkan"
-                            aria-label="default input example">
+                            aria-label="default input example" required>
                     </div>
                     <div class="row col-md-3 mt-4">
                         <label class="row" for="tanggal_expired">Tanggal Expired</label>
                         <input class="form-control" type="date" name="tanggal_expired" placeholder="Tanggal Expired"
-                            aria-label="default input example">
+                            aria-label="default input example" required>
                     </div>
                 </div>
                 <div class="row">
@@ -79,8 +79,8 @@
                             <label for="jenis_lisence" class="row form-label">Jenis Lisence</label>
                             <div>
                                 <select class="row form-control" name="jenis_lisence" id="floatingSelect"
-                                    aria-label="Floating label select example">
-                                    <option selected>Pilih</option>
+                                    aria-label="Floating label select example" required>
+                                    <option disabled disabled>-- Pilih --</option>
                                     <option value="berlangganan">Berlangganan</option>
                                     <option value="sekali_beli">Sekali Beli</option>
                                     <option value="permanen">Permanen</option>

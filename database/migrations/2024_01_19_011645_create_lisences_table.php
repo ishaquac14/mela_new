@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('tanggal_keluar');
             $table->date('tanggal_expired');
             $table->string('jenis_lisence');
-            $table->string('input_file');
+            $table->string('input_file')->nullable();
             $table->string('note')->nullable();
             $table->timestamps();
         });
