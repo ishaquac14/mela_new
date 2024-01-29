@@ -29,25 +29,20 @@
                 <input type="text" name="jenis_transaksi" class="form-control" value="{{ $transaction->jenis_transaksi }}" readonly>
             </div>
             <div class="col-md-6">
-                <label class="form-label">Tanggal Dikeluarkan</label>
-                <input type="text" name="tanggal_keluar" class="form-control" value="{{ $transaction->tanggal_keluar }}"
+                <label class="form-label">Pihak Terkait</label>
+                <input type="text" name="pihak" class="form-control" value="{{ $transaction->pihak }}"
                     readonly>
             </div>
         </div>
 
         <div class="row mt-3">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <label class="form-label">Deskripsi</label>
                 <input type="text" name="deskripsi" class="form-control" value="{{ $transaction->deskripsi }}" readonly>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <label class="form-label">Jumlah Item</label>
                 <input type="text" name="jumlah_item" class="form-control" value="{{ $transaction->jumlah_item }}"
-                    readonly>
-            </div>
-            <div class="col-md-4">
-                <label class="form-label">Pihak Terkait</label>
-                <input type="text" name="pihak" class="form-control" value="{{ $transaction->pihak }}"
                     readonly>
             </div>
         </div>

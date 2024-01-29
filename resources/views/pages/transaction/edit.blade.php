@@ -11,7 +11,7 @@
             </div>
         </div>
 
-        <form action="{{ route('transaction.update', ['id' => $transaction->id]) }}" method="GET"
+        <form action="{{ route('transaction.update', ['id' => $transaction->id]) }}" method="POST"
             enctype="multipart/form-data">
             @method('PUT')
             @csrf
@@ -54,14 +54,15 @@
                         <input class="form-control form-group" type="text" name="pihak" placeholder="Pihak Terkait"
                             aria-label="default input example" value="{{ $transaction->pihak }}">
                     </div>
-                    <div class="row col-md-6 mt-4">
-                        <label for="input_file" class="row form-label">Bukti Transaksi</label>
-                        <div class="row form-group">
+
+                    <div class="col-md-6 mt-4" style="margin-left: -10px">
+                        <label for="input_file" class="form-label">Bukti Transaksi</label>
+                        <div class="form-group">
                             <div class="input-group">
-                                <input name="input_file" class="row form-control" id="input_file" type="file" accept=".pdf">
+                                <input name="input_file" class="form-control" id="input_file" type="file" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.jpg,.jpeg,.png,.gif,.txt">
                                 @if ($transaction->input_file)
                                     <div class="input-group-append">
-                                        <span class="i  nput-group-text">File saat ini :</span>
+                                        <span class="input-group-text">File saat ini :</span>
                                     </div>
                                     <input type="text" class="form-control" readonly value="{{ $transaction->input_file }}">
                                 @else

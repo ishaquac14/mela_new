@@ -11,7 +11,7 @@
             </div>
         </div>
 
-        <form action="{{ route('lisence.update', ['id' => $lisence->id]) }}" method="GET" enctype="multipart/form-data">
+        <form action="{{ route('lisence.update', ['id' => $lisence->id]) }}" method="POST" enctype="multipart/form-data">
             @method('PUT')
             @csrf
             {{-- @method('POST') --}}
@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6 mt-4" style="margin-right: 10px">
+                    <div class="col-md-6 mt-4" style="margin-right: -5px;">
                         <div class="form-group">
                             <label for="jenis_lisence" class="row form-label">Jenis Lisence</label>
                             <div>
@@ -66,11 +66,11 @@
                         </div>
                     </div>
 
-                    <div class="row col-md-6 mt-4">
+                    <div class="col-md-6 mt-4">
                         <label for="input_file" class="form-label">Lisensi Bentuk PDF</label>
-                        <div class="row form-group">
+                        <div class="form-group">
                             <div class="input-group">
-                                <input name="input_file" class="row form-control" id="input_file" type="file" accept=".pdf">
+                                <input name="input_file" class="form-control" id="input_file" type="file" accept=".pdf">
                                 @if ($lisence->input_file)
                                     <div class="input-group-append">
                                         <span class="input-group-text">File saat ini :</span>

@@ -59,7 +59,7 @@ Route::get(
     [LisenceController::class, 'edit']
 )->name('lisence.edit');
 
-Route::get(
+Route::put(
     '/lisence/update/{id}',
     [LisenceController::class, 'update']
 )->name('lisence.update');
@@ -99,7 +99,7 @@ Route::get(
     [TransactionController::class, 'edit']
 )->name('transaction.edit');
 
-Route::get(
+Route::put(
     '/transaction/update/{id}',
     [TransactionController::class, 'update']
 )->name('transaction.update');

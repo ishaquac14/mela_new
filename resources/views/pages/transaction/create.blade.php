@@ -53,7 +53,7 @@
                     <div class="row col-md-6">
                         <label class="row" for="tanggal_transaksi">Tanggal Transaksi</label>
                         <input class="form-control" type="date" name="tanggal_transaksi" placeholder="Masukan Tanggal Transaksi"
-                            aria-label="default input example">
+                            aria-label="default input example" required>
                     </div>
                 </div>
                 <div class="row">
@@ -62,8 +62,8 @@
                             <label for="jenis_transaksi" class="row form-label">Jenis Transaksi</label>
                             <div>
                                 <select class="row form-control" name="jenis_transaksi" id="floatingSelect"
-                                    aria-label="Floating label select example">
-                                    <option selected>Pilih</option>
+                                    aria-label="Floating label select example" required>
+                                    <option selected disabled>-- Pilih --</option>
                                     <option value="gr">GR</option>
                                     <option value="pr">PR</option>
                                     <option value="others">Others</option>
@@ -74,19 +74,19 @@
                     <div class="row col-md-6 mt-4 form-group">
                         <label class="row" for="deskripsi">Deskripsi</label>
                         <input class="form-control" type="text" name="deskripsi" placeholder="Masukan Deskripsi"
-                            aria-label="default input example">
+                            aria-label="default input example" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="row col-md-4 mt-3 form-group" style="margin-right :20px">
                         <label class="row" for="jumlah_item">Jumlah Item</label>
                         <input class="form-control form-group" type="text" name="jumlah_item" placeholder="Jumlah Item"
-                            aria-label="default input example">
+                            aria-label="default input example" required>
                     </div>
                     <div class="row col-md-4 mt-3 form-group" style="margin-right :20px">
                         <label class="row" for="pihak">Pihak Terkait</label>
                         <input class="form-control form-group" type="text" name="pihak" placeholder="Input Pihak Terkait"
-                            aria-label="default input example">
+                            aria-label="default input example" required>
                     </div>
                     <div class="row col-md-4 mt-3 form-group">  
                         <label for="input_file" class="row form-label">Bukti Transaksi</label>

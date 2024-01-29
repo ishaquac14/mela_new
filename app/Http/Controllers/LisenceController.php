@@ -41,56 +41,32 @@ class LisenceController extends Controller
         return redirect()->route('lisence.index')->with('error', 'Data Berhasil Dihapus !');
     }
 
-    public function update(Request $request, $id)
-    {
-        $lisence = Lisence::findOrFail($id);
-
-        $request->validate([
-            'nama_lisence' => 'string|nullable',
-            'nomor_lisence' => 'string|nullable',
-            'vendor' => 'string|nullable',
-            'tanggal_keluar' => 'string|nullable',
-            'tanggal_expired' => 'string|nullable',
-            'jenis_lisence' => 'string|nullable',
-            'input_file' => 'nullable|mimes:pdf',
-            'note' => 'string|nullable'
-        ]);
-
-        $data = $request->only([
-            'nama_lisence', 'nomor_lisence', 'vendor', 'tanggal_keluar', 
-            'tanggal_expired', 'jenis_lisence', 'input_file', 'note']);
-
-        $lisence->update($data);
-        
-        return redirect()->route('lisence.index')->with('success', 'Data Berhasil diupdate !');
-    }
-
     public function store(Request $request)
     {
         try {
-        $request->validate([
-            'nama_lisence' => 'string|nullable',
-            'nomor_lisence' => 'string|nullable',
-            'vendor' => 'string|nullable',
-            'tanggal_keluar' => 'string|nullable',
-            'tanggal_expired' => 'string|nullable',
-            'jenis_lisence' => 'string|nullable',
-            'input_file' => 'nullable|mimes:pdf',
-            'note' => 'string|nullable'
-        ]);
-        // dd($request);
-        $data = $request->only([
-            'nama_lisence',
-            'nomor_lisence',
-            'vendor',
-            'tanggal_keluar',
-            'tanggal_expired',
-            'jenis_lisence',
-            'input_file',
-            'note'
-        ]);
+            $request->validate([
+                'nama_lisence' => 'string|required',
+                'nomor_lisence' => 'string|required',
+                'vendor' => 'string|required',
+                'tanggal_keluar' => 'string|required',
+                'tanggal_expired' => 'string|required',
+                'jenis_lisence' => 'string|required',
+                'input_file' => 'required|mimes:pdf',
+                'note' => 'string|nullable'
+            ]);
+            // dd($request);
+            $data = $request->only([
+                'nama_lisence',
+                'nomor_lisence',
+                'vendor',
+                'tanggal_keluar',
+                'tanggal_expired',
+                'jenis_lisence',
+                'input_file',
+                'note'
+            ]);
 
-        
+
             if ($request->hasFile('input_file')) {
                 $allowedExtensions = ['pdf'];
 
@@ -104,7 +80,7 @@ class LisenceController extends Controller
                     $path = $file->storeAs('public/storage/', $filenameSimpan);
 
                     $data['input_file'] = $filenameSimpan;
-                } 
+                }
             }
 
             Lisence::create($data);
@@ -114,5 +90,58 @@ class LisenceController extends Controller
             return back()->with('error', 'File harus berupa PDF !');
         }
     }
-    
+
+    public function update(Request $request, $id)
+    {
+        try {
+            $request->validate([
+                'nama_lisence' => 'string|required',
+                'nomor_lisence' => 'string|required',
+                'vendor' => 'string|required',
+                'tanggal_keluar' => 'string|required',
+                'tanggal_expired' => 'string|required',
+                'jenis_lisence' => 'string|required',
+                'input_file' => 'required|mimes:pdf',
+                'note' => 'string|nullable'
+            ]);
+
+            $lisence = Lisence::findOrFail($id);
+
+            $data = $request->only([
+                'nama_lisence',
+                'nomor_lisence',
+                'vendor',
+                'tanggal_keluar',
+                'tanggal_expired',
+                'jenis_lisence',
+                'note'
+            ]);
+
+            if ($request->hasFile('input_file')) {
+                $allowedExtensions = ['pdf'];
+                $file = $request->file('input_file');
+                $extension = $file->getClientOriginalExtension();
+
+                if (in_array(strtolower($extension), $allowedExtensions)) {
+                    $filenameWithExt = $file->getClientOriginalName();
+                    $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                    $filenameSimpan = $filename . '_' . time() . '.' . $extension;
+                    $path = $file->storeAs('public/storage/', $filenameSimpan);
+
+                    // Remove old file if exists
+                    if ($lisence->input_file) {
+                        Storage::delete('public/storage/' . $lisence->input_file);
+                    }
+
+                    $data['input_file'] = $filenameSimpan;
+                }
+            }
+
+            $lisence->update($data);
+
+            return redirect()->route('lisence.index')->with('success', 'Data berhasil diupdate !');
+        } catch (Exception $e) {
+            return back()->with('error', 'Terjadi kesalahan saat memperbarui data!');
+        }
+    }
 }

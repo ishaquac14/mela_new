@@ -41,10 +41,25 @@
                 <input type="text" name="tanggal_expired" class="form-control" value="{{ $lisence->tanggal_expired }}" readonly>
             </div>
             <div class="col-md-6">
-                <label class="form-label">Jenis Lisence</label>
-                <input type="text" name="jenis_lisence" class="form-control" value="{{ $lisence->jenis_lisence }}"
-                    readonly>
-            </div>
+                <div class="form-group">
+                    <label for="jenis_lisence" class="form-label">Jenis Lisence</label>
+                    <div>
+                        <select class="form-control" name="jenis_lisence" id="floatingSelect"
+                            aria-label="Floating label select example" readonly>
+                            <option value="" disabled selected>-- Pilih --</option>
+                            <option value="berlangganan" {{ $lisence->jenis_lisence == 'berlangganan' ? 'selected' : '' }}>
+                                Berlangganan
+                            </option>
+                            <option value="sekali_beli" {{ $lisence->jenis_lisence == 'sekali_beli' ? 'selected' : '' }}>
+                                Sekali Beli
+                            </option>
+                            <option value="permanen" {{ $lisence->jenis_lisence == 'permanen' ? 'selected' : '' }}>
+                                Permanen
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>            
         </div>
 
         <div class="row mt-3">
@@ -54,7 +69,7 @@
             </div>
             <div class="col-md-6">
                 <label class="form-label">Note</label>
-                <textarea name="note" class="form-control" readonly>{{ $lisence->note }}</textarea>
+                <textarea name="note" class="form-control" style="height: 5rem;" readonly>{{ $lisence->note }}</textarea>
             </div>            
         </div>
 

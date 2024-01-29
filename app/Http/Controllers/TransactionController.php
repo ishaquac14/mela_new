@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Transaction;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TransactionController extends Controller
 {
@@ -32,19 +33,21 @@ class TransactionController extends Controller
     public function store(Request $request)
     {
         try {
+            // Validasi input
             $request->validate([
-                'id_transaksi' => 'nullable|string',
-                'tanggal_transaksi' => 'nullable|string',
-                'jenis_transaksi' => 'nullable|string',
-                'deskripsi' => 'nullable|string',
-                'jumlah_item' => 'nullable|string',
-                'pihak' => 'nullable|string',
+                'id_transaksi' => 'required|string',
+                'tanggal_transaksi' => 'required|string',
+                'jenis_transaksi' => 'required|string',
+                'deskripsi' => 'required|string',
+                'jumlah_item' => 'required|string',
+                'pihak' => 'required|string',
                 'input_file' => 'nullable|file|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx,jpg,jpeg,png,gif,txt',
                 'note' => 'nullable|string'
             ]);
 
-            // Simpan data yang valid ke dalam database
+            // Simpan data yang valid ke dalam variabel $data
             $data = $request->only([
+                'id_transaksi',
                 'tanggal_transaksi',
                 'jenis_transaksi',
                 'deskripsi',
@@ -53,20 +56,42 @@ class TransactionController extends Controller
                 'note'
             ]);
 
-            // Gunakan ID transaksi yang sudah ditetapkan sebelumnya
+            // Menggunakan ID transaksi yang sudah ditetapkan sebelumnya
             $data['id_transaksi'] = $request->id_transaksi;
 
+            // Memproses upload file jika ada
             if ($request->hasFile('input_file')) {
-                // Proses upload file
+                // Mengambil ekstensi file yang diunggah
+                $file = $request->file('input_file');
+                $extension = strtolower($file->getClientOriginalExtension());
+
+                // Menyimpan file hanya jika ekstensinya diizinkan
+                if (in_array($extension, ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'jpg', 'jpeg', 'png', 'gif', 'txt'])) {
+                    // Menyimpan file dengan nama yang unik
+                    $filenameWithExt = $file->getClientOriginalName();
+                    $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                    $filenameSimpan = $filename . '_' . time() . '.' . $extension;
+                    $path = $file->storeAs('public/storage/', $filenameSimpan);
+
+                    // Menyimpan nama file ke dalam variabel $data
+                    $data['input_file'] = $filenameSimpan;
+                } else {
+                    // Jika ekstensi file tidak diizinkan, kembalikan pesan kesalahan
+                    return back()->with('error', 'Tipe file tidak diizinkan. Silakan unggah file dengan salah satu ekstensi berikut: pdf, doc, docx, xls, xlsx, ppt, pptx, jpg, jpeg, png, gif, atau txt.');
+                }
             }
 
+            // Menyimpan data transaksi ke dalam database
             Transaction::create($data);
 
+            // Redirect ke halaman indeks transaksi dengan pesan sukses
             return redirect()->route('transaction.index')->with('success', 'Data berhasil disimpan !');
         } catch (Exception $e) {
+            // Jika terjadi kesalahan, kembalikan ke halaman sebelumnya dengan pesan error
             return back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
     }
+
 
     public function show($id)
     {
@@ -89,44 +114,65 @@ class TransactionController extends Controller
 
     public function update(Request $request, $id)
     {
-        // Temukan transaksi berdasarkan ID atau beri respons 404 jika tidak ditemukan
-        $transaction = Transaction::findOrFail($id);
+        try {
+            // Temukan transaksi berdasarkan ID
+            $transaction = Transaction::findOrFail($id);
 
-        // Validasi permintaan
-        $request->validate([
-            'tanggal_transaksi' => 'nullable|string',
-            'jenis_transaksi' => 'nullable|string',
-            'deskripsi' => 'nullable|string',
-            'jumlah_item' => 'nullable|string',
-            'pihak' => 'nullable|string',
-            'input_file' => 'nullable|file|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx,jpg,jpeg,png,gif,txt',
-            'note' => 'nullable|string'
-        ]);
+            // Validasi input
+            $request->validate([
+                'tanggal_transaksi' => 'required|string',
+                'jenis_transaksi' => 'required|string',
+                'deskripsi' => 'required|string',
+                'jumlah_item' => 'required|string',
+                'pihak' => 'required|string',
+                'input_file' => 'nullable|file|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx,jpg,jpeg,png,gif,txt',
+                'note' => 'nullable|string'
+            ]);
 
-        // Mengambil data dari permintaan yang diizinkan
-        $data = $request->only([
-            'tanggal_transaksi',
-            'jenis_transaksi',
-            'deskripsi',
-            'jumlah_item',
-            'pihak',
-            'note'
-        ]);
+            // Simpan data yang valid ke dalam variabel $data
+            $data = $request->only([
+                'tanggal_transaksi',
+                'jenis_transaksi',
+                'deskripsi',
+                'jumlah_item',
+                'pihak',
+                'note'
+            ]);
 
-        // Menetapkan ID transaksi yang sudah ditetapkan sebelumnya
-        $data['id_transaksi'] = $id;
+            // Memproses upload file jika ada
+            if ($request->hasFile('input_file')) {
+                $file = $request->file('input_file');
+                $extension = strtolower($file->getClientOriginalExtension());
 
-        // Proses upload file jika ada
-        if ($request->hasFile('input_file')) {
-            // Lakukan proses unggah file di sini
-            // $file = $request->file('input_file');
-            // $file->store('uploads');
+                // Menyimpan file hanya jika ekstensinya diizinkan
+                if (in_array($extension, ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'jpg', 'jpeg', 'png', 'gif', 'txt'])) {
+                    // Menghapus file lama jika ada
+                    if ($transaction->input_file) {
+                        Storage::delete('public/storage/' . $transaction->input_file);
+                    }
+
+                    // Menyimpan file dengan nama yang unik
+                    $filenameWithExt = $file->getClientOriginalName();
+                    $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                    $filenameSimpan = $filename . '_' . time() . '.' . $extension;
+                    $path = $file->storeAs('public/storage/', $filenameSimpan);
+
+                    // Menyimpan nama file ke dalam variabel $data
+                    $data['input_file'] = $filenameSimpan;
+                } else {
+                    // Jika ekstensi file tidak diizinkan, kembalikan pesan kesalahan
+                    return back()->with('error', 'Tipe file tidak diizinkan. Silakan unggah file dengan salah satu ekstensi berikut: pdf, doc, docx, xls, xlsx, ppt, pptx, jpg, jpeg, png, gif, atau txt.');
+                }
+            }
+
+            // Perbarui data transaksi
+            $transaction->update($data);
+
+            // Redirect ke halaman indeks transaksi dengan pesan sukses
+            return redirect()->route('transaction.index')->with('success', 'Data berhasil diperbarui !');
+        } catch (Exception $e) {
+            // Jika terjadi kesalahan, kembalikan ke halaman sebelumnya dengan pesan error
+            return back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
-
-        // Perbarui data transaksi
-        $transaction->update($data);
-
-        // Redirect kembali ke halaman indeks transaksi dengan pesan sukses
-        return redirect()->route('transaction.index')->with('success', 'Data berhasil diupdate !');
     }
 }
