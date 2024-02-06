@@ -92,7 +92,7 @@
                     <div class="row col-md-6 mt-4">
                         <label for="input_file" class="row form-label">Lisensi Bentuk PDF</label>
                         <div class="row form-group">
-                            <input name="input_file" class="col-md-6 form-control" id="input_file" type="file" accept=".pdf">
+                            <input name="input_file" class="col-md-6 form-control" id="input_file" type="file" accept=".pdf" required>
                         </div>
                     </div>                    
                 </div>
