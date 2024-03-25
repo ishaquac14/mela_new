@@ -364,6 +364,15 @@
                 0 => 'v10.39.0',
             ),
         ),
+        'intervention/image' => array(
+            'pretty_version' => '2.7.2',
+            'version' => '2.7.2.0',
+            'reference' => '04be355f8d6734c826045d02a1079ad658322dad',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../intervention/image',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'kodova/hamcrest-php' => array(
             'dev_requirement' => true,
             'replaced' => array(
@@ -459,6 +468,15 @@
             'install_path' => __DIR__ . '/../laravel/ui',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'laravolt/avatar' => array(
+            'pretty_version' => '5.0.0',
+            'version' => '5.0.0.0',
+            'reference' => 'a4d533521191449fdb5efc8d9ed015bd639c2307',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laravolt/avatar',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'league/commonmark' => array(
             'pretty_version' => '2.4.1',
